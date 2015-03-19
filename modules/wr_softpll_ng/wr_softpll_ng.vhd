@@ -83,6 +83,7 @@ entity wr_softpll_ng is
 
     g_ref_clock_rate : integer := 125000000;
     g_ext_clock_rate : integer := 10000000;
+    g_sys_clock_rate : integer := 62500000;
 
 
     g_interface_mode      : t_wishbone_interface_mode      := PIPELINED;
@@ -360,7 +361,7 @@ begin  -- rtl
   U_Meas_REF_Freq: gc_frequency_meter
     generic map (
       g_with_internal_timebase => false,
-      g_clk_sys_freq           => 1,
+      g_clk_sys_freq           => g_sys_clock_rate,
       g_counter_bits           => 28)
     port map (
       clk_sys_i    => clk_sys_i,
@@ -373,7 +374,7 @@ begin  -- rtl
   U_Meas_EXT_Freq: gc_frequency_meter
     generic map (
       g_with_internal_timebase => false,
-      g_clk_sys_freq           => 1,
+      g_clk_sys_freq           => g_sys_clock_rate,
       g_counter_bits           => 28)
     port map (
       clk_sys_i    => clk_sys_i,

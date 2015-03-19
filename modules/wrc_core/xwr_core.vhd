@@ -68,6 +68,8 @@ entity xwr_core is
     --up simulation
     g_simulation                : integer                        := 0;
     g_with_external_clock_input : boolean                        := false;
+    g_external_clock_rate       : integer                        := 10000000;
+    g_system_clock_rate         : integer                        := 62500000;
     --
     g_phys_uart                 : boolean                        := true;
     g_virtual_uart              : boolean                        := false;
@@ -232,6 +234,8 @@ begin
       g_rx_buffer_size            => g_ep_rxbuf_size,
       g_tx_runt_padding           => g_tx_runt_padding,
       g_with_external_clock_input => g_with_external_clock_input,
+      g_external_clock_rate       => g_external_clock_rate,
+      g_system_clock_rate         => g_system_clock_rate,
       g_aux_clks                  => g_aux_clks,
       g_dpram_initf               => g_dpram_initf,
       g_dpram_size                => g_dpram_size,

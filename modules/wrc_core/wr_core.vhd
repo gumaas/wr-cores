@@ -83,6 +83,8 @@ entity wr_core is
     --up simulation
     g_simulation                : integer                        := 0;
     g_with_external_clock_input : boolean                        := false;
+    g_external_clock_rate       : integer                        := 10000000;
+    g_system_clock_rate         : integer                        := 62500000;
     --
     g_phys_uart                 : boolean                        := true;
     g_virtual_uart              : boolean                        := false;
@@ -311,6 +313,15 @@ architecture struct of wr_core is
     end if;
   end function;
 
+  function f_pick_rate (pcs_16bit : boolean) return integer is
+  begin
+    if(pcs_16bit) then
+      return 62500000;
+    else
+      return 125000000;
+    end if;
+  end f_pick_rate;
+
   signal rst_wrc_n : std_logic;
   signal rst_net_n : std_logic;
 
@@ -493,8 +504,8 @@ begin
     generic map(
       g_interface_mode       => PIPELINED,
       g_address_granularity  => BYTE,
-      g_ref_clock_rate       => 125000000,
-      g_ext_clock_rate       => 10000000,
+      g_ref_clock_rate       => f_pick_rate(g_pcs_16bit),
+      g_ext_clock_rate       => g_external_clock_rate,
       g_with_ext_clock_input => g_with_external_clock_input)
     port map(
       clk_ref_i => clk_ref_i,
@@ -533,8 +544,9 @@ begin
       g_address_granularity  => BYTE,
       g_num_ref_inputs       => 1,
       g_num_outputs          => 1 + g_aux_clks,
-      g_ref_clock_rate       => 125000000,
-      g_ext_clock_rate       => 10000000)
+      g_ref_clock_rate       => f_pick_rate(g_pcs_16bit),
+      g_sys_clock_rate       => g_system_clock_rate,
+      g_ext_clock_rate       => g_external_clock_rate)
     port map(
       clk_sys_i => clk_sys_i,
       rst_n_i   => rst_net_n,

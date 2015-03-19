@@ -260,6 +260,7 @@ package wrcore_pkg is
       g_reverse_dmtds        : boolean;
       g_divide_input_by_2    : boolean;
       g_ref_clock_rate       : integer;
+      g_sys_clock_rate       : integer;
       g_ext_clock_rate       : integer;
       g_interface_mode       : t_wishbone_interface_mode;
       g_address_granularity  : t_wishbone_address_granularity);
@@ -300,6 +301,8 @@ package wrcore_pkg is
       g_phys_uart                 : boolean                        := true;
       g_virtual_uart              : boolean                        := false;
       g_with_external_clock_input : boolean                        := false;
+      g_external_clock_rate       : integer                        := 10000000;
+      g_system_clock_rate         : integer                        := 62500000;
       g_aux_clks                  : integer                        := 1;
       g_ep_rxbuf_size             : integer                        := 1024;
       g_tx_runt_padding           : boolean                        := false;
@@ -404,6 +407,8 @@ package wrcore_pkg is
       --up simulation
       g_simulation                : integer                        := 0;
       g_with_external_clock_input : boolean                        := false;
+      g_external_clock_rate       : integer                        := 10000000;
+      g_system_clock_rate         : integer                        := 62500000;
       --
       g_phys_uart                 : boolean                        := true;
       g_virtual_uart              : boolean                        := false;

@@ -76,6 +76,7 @@ entity xwr_softpll_ng is
     g_divide_input_by_2 : boolean := false;
 
     g_ref_clock_rate : integer := 125000000;
+    g_sys_clock_rate : integer := 62500000;
     g_ext_clock_rate : integer := 10000000;
 
     g_interface_mode      : t_wishbone_interface_mode      := PIPELINED;
@@ -142,6 +143,7 @@ architecture wrapper of xwr_softpll_ng is
       g_divide_input_by_2    : boolean;
       g_ref_clock_rate       : integer;
       g_ext_clock_rate       : integer;
+      g_sys_clock_rate       : integer;
       g_interface_mode       : t_wishbone_interface_mode;
       g_address_granularity  : t_wishbone_address_granularity);
     port (
@@ -191,6 +193,7 @@ begin  -- behavioral
       g_reverse_dmtds        => g_reverse_dmtds,
       g_divide_input_by_2    => g_divide_input_by_2,
       g_ref_clock_rate  => g_ref_clock_rate,
+      g_sys_clock_rate  => g_sys_clock_rate,
       g_ext_clock_rate  => g_ext_clock_rate
       )
     port map (
