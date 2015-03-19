@@ -257,15 +257,20 @@ begin
       dac_dpll_data_o    => dac_dpll_data_o,
 
       phy_ref_clk_i      => phy_ref_clk_i,
+      
       phy_tx_data_o      => phy_tx_data_o,
       phy_tx_k_o         => phy_tx_k_o,
+      phy_tx_k16_o       => phy_tx_k16_o,
       phy_tx_disparity_i => phy_tx_disparity_i,
       phy_tx_enc_err_i   => phy_tx_enc_err_i,
+      
       phy_rx_data_i      => phy_rx_data_i,
       phy_rx_rbclk_i     => phy_rx_rbclk_i,
       phy_rx_k_i         => phy_rx_k_i,
+      phy_rx_k16_i       => phy_rx_k16_i,
       phy_rx_enc_err_i   => phy_rx_enc_err_i,
       phy_rx_bitslide_i  => phy_rx_bitslide_i,
+      
       phy_rst_o          => phy_rst_o,
       phy_loopen_o       => phy_loopen_o,
 
